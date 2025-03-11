@@ -9,6 +9,11 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+// This is the error handler for routes that doesn't exist
+app.all("*", (req, res) => {
+  res.status(404).send("Page not found");
+});
+
 mongoose.connection.once("open", () => {
   console.log("Connected to MongoDB");
   app.listen(port, () => {
