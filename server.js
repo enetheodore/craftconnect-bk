@@ -9,6 +9,9 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+
+app.use('/test', require('./routes/testRoute'));
+
 // This is the error handler for routes that doesn't exist
 app.all("*", (req, res) => {
   res.status(404).send("Page not found");
