@@ -1,4 +1,4 @@
-const createTest = require("../dbOperations/createData");
+const {createTest} = require("../dbOperations/createData");
 const { testFetch } = require("../dbOperations/fetchData");
 const { updateTest } = require("../dbOperations/updateData");
 
