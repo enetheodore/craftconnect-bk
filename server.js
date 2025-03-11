@@ -1,3 +1,4 @@
+require("dotenv").config(); //this loads the defined variables from .env file
 const dbConnect = require("./config/dbConnect");
 const mongoose = require("mongoose");
 const express = require("express");
