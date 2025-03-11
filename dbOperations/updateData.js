@@ -1,4 +1,3 @@
-const testModel = require("../models/testModel");
 
 
 const updateTest = async(id, newName) => {

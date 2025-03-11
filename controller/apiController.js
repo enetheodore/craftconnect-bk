@@ -1,10 +1,25 @@
-const { registerUser } = require("../dbOperations/createData");
+const { registerUser, loginUser } = require("../dbOperations/createData");
 
-const registerPost = (req, res) => {
-  console.log(req.body);
+const registerPost = async (req, res) => {
   const { name, email, password, role } = req.body;
-  const register = registerUser(name, email, password, role);
-  res.send("post response");
+
+  try {
+    const user = await registerUser(name, email, password, role);
+    res.status(201).json(user);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
 };
 
-module.exports = { registerPost }; 
+const loginPost = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await loginUser(email, password);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+module.exports = { registerPost ,loginPost}; 

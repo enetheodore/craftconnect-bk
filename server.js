@@ -14,6 +14,7 @@ app.get("/", (req, res) => {
 
 app.use('/test', require('./routes/testRoute'));
 app.use("/register", require("./routes/apiRoute"));
+app.use("/login", require("./routes/apiRoute"));
 
 // This is the error handler for routes that doesn't exist
 app.all("*", (req, res) => {
