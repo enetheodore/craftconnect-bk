@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt"); 
 const testModel = require("../models/testModel");
-const register = require("../models/apiModel");
+const user = require("../models/userModel");
 const productSchema = require("../models/productModel");
 const categorySchema = require("../models/categoryModel");
 const { hashPassword } = require("../utilities/utilities");
@@ -26,7 +26,7 @@ const createCategory = async (name, description, createdAt) => {
 
 const registerUser = async (name, email, password, role) => {
   const hashedPassword = await hashPassword(password);
-  const data = new register({
+  const data = new user({
     name: name,
     email: email,
     password: hashedPassword,
@@ -37,7 +37,7 @@ const registerUser = async (name, email, password, role) => {
 };
 
 const loginUser = async (email, password) => {
-  const user = await register.findOne({ email: email });
+  const user = await user.findOne({ email: email });
 
   if (!user) {
     throw new Error("User not found");

@@ -1,5 +1,5 @@
-const express = require('express');
-const { registerPost,loginPost } = require("../controller/apiController");
+const express = require("express");
+const { registerPost, loginPost } = require("../controller/userController");
 const { deleteUser } = require("../dbOperations/deleteData");
 const router = express.Router();
 

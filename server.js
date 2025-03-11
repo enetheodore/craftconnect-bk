@@ -13,8 +13,8 @@ app.get("/", (req, res) => {
 
 
 app.use('/test', require('./routes/testRoute'));
-app.use("/register", require("./routes/apiRoute"));
-app.use("/login", require("./routes/apiRoute"));
+app.use("/register", require("./routes/userRoute"));
+app.use("/login", require("./routes/userRoute"));
 app.use("/product", require("./routes/productRoute"));
 app.use("/order", require("./routes/orderRoute"));
 app.use("/category", require("./routes/categoryRoute"));  

@@ -1,5 +1,5 @@
 const Product = require("../models/productModel");
-const User = require("../models/apiModel");
+const User = require("../models/userModel");
 
 const deleteProduct = async (productId) => {
   const deletedProductItem = await Product.findByIdAndDelete(productId);
