@@ -2,13 +2,9 @@ const testModel = require("../models/testModel")
 
 
 const testFetch = async ()=>{
-    const data = await testModel.find({},(err,docs)=>{
-        if(err){
-            console.log(err)
-        }else{
-            console.log(docs)
-        }
-    }
-    )
+    const data = await testModel.find()
+    console.log(data)
     return data
 }
+
+module.exports = {testFetch}

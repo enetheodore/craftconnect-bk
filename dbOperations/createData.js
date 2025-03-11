@@ -1,5 +1,7 @@
 const testModel = require("../models/testModel");
 
+
+
 const createTest = async (name, age) => {
   const data = new testModel({
     name: name,
@@ -9,4 +11,4 @@ const createTest = async (name, age) => {
   return data;
 }
 
-module.exports = createTest;
+module.exports = {createTest};

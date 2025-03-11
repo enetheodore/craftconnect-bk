@@ -5,6 +5,8 @@ const express = require("express");
 const app = express();
 const port = 3000;
 dbConnect();
+
+app.use(express.json()); //this is a middleware that parses the incoming request with JSON payloads
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
