@@ -36,6 +36,17 @@ const register = new mongoose.Schema({
     },
   },
 
+  customerDetails: {
+    address: {
+      type: String,
+      required: false,
+    },
+    phoneNumber: {
+      type: String,
+      required: false,
+    },
+  },
+
 });
 
 module.exports = mongoose.model("register", register);
