@@ -1,14 +1,14 @@
-const Cart = require("../models/cartModel"); 
-const User = require("../models/apiModel"); 
+const Product = require("../models/productModel");
+const User = require("../models/apiModel");
 
-const deleteCart = async (cartId) => {
-  const deletedCartItem = await Cart.findByIdAndDelete(cartId);
+const deleteProduct = async (productId) => {
+  const deletedProductItem = await Product.findByIdAndDelete(productId);
 
-  if (!deletedCartItem) {
-    throw new Error("Cart item not found");
+  if (!deletedProductItem) {
+    throw new Error("Product not found");
   }
 
-  return deletedCartItem;
+  return deletedProductItem;
 };
 
 const deleteUser = async (userId) => {
@@ -21,4 +21,4 @@ const deleteUser = async (userId) => {
   return deletedUser;
 };
 
-module.exports = { deleteCart, deleteUser };
+module.exports = { deleteProduct, deleteUser };

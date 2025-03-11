@@ -1,6 +1,6 @@
 const { acceptOrder, shipOrder, deliverOrder } = require("../dbOperations/updateData");
 
-const acceptedOrder = async (req, res) => {
+const acceptOrder = async (req, res) => {
   const orderId = req.params.id;
 
   try {

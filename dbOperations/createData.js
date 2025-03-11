@@ -1,13 +1,24 @@
 const bcrypt = require("bcrypt"); 
 const testModel = require("../models/testModel");
 const register = require("../models/apiModel");
-const cartSchema = require("../models/cartModel");
+const productSchema = require("../models/productModel");
+const categorySchema = require("../models/categoryModel");
 const { hashPassword } = require("../utilities/utilities");
 
 const createTest = async (name, age) => {
   const data = new testModel({
     name: name,
     age: age,
+  });
+  await data.save();
+  return data;
+};
+
+const createCategory = async (name, description, createdAt) => {
+  const data = new categorySchema({
+    name: name,
+    description: description,
+    createdAt: new Date(),
   });
   await data.save();
   return data;
@@ -42,7 +53,7 @@ const loginUser = async (email, password) => {
   return userData;
 };
 
-const createCart = async (
+const createProduct = async (
   title,
   description,
   price,
@@ -51,7 +62,7 @@ const createCart = async (
   images,
   inventoryCount,
 ) => {
-  const cartItem = new cartSchema({
+  const productItem = new productSchema({
     title: title,
     description: description,
     price: price,
@@ -63,8 +74,8 @@ const createCart = async (
     updatedAt: new Date(),
   });
 
-  await cartItem.save();
-  return cartItem;
+  await productItem.save();
+  return productItem;
 };
 
-module.exports = { createTest, registerUser, loginUser, createCart };
+module.exports = { createTest, registerUser, loginUser, createProduct, createCategory };

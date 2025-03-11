@@ -25,7 +25,7 @@ const createOrder = async (customerId, artisanId, products, totalAmount) => {
 const getOrders = async (userId) => {
   return await Order.find({
     $or: [{ customerId: userId }, { artisanId: userId }],
-  }).populate("customerId artisanId products.productId"); // Populate user and product details
+  }).populate("customerId artisanId products.productId"); 
 };
 
 const updateOrderStatus = async (orderId, newStatus) => {
