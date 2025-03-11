@@ -1,4 +1,4 @@
-const { registerUser, loginUser } = require("../dbOperations/createData");
+const { registerUser, loginUser, createCart } = require("../dbOperations/createData");
 
 const registerPost = async (req, res) => {
   const { name, email, password, role } = req.body;
@@ -22,4 +22,23 @@ const loginPost = async (req, res) => {
   }
 };
 
-module.exports = { registerPost ,loginPost}; 
+const cartPost =async (req, res) => {
+  const { title, description, price, categoryId, artisanId, images, inventoryCount } = req.body;
+
+  try {
+    const newCartItem = await createCart(
+      title,
+      description,
+      price,
+      categoryId,
+      artisanId,
+      images,
+      inventoryCount,
+    );
+    res.status(201).json(newCartItem);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+module.exports = { registerPost ,loginPost, cartPost }; 
