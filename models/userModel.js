@@ -13,10 +13,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  role: {
-    type: String,
-    required: true,
-  },
+  role: { type: String, enum: ["admin", "artisan", "customer"], required: true },
   createdAt: {
     type: Date,
     default: Date.now,
@@ -46,7 +43,6 @@ const userSchema = new mongoose.Schema({
       required: false,
     },
   },
-
 });
 
 module.exports = mongoose.model("user", userSchema);
