@@ -52,7 +52,7 @@ const loginUser = async (email, password) => {
   const token = await generateToken(user);
 
   const { password: _, ...userData } = user.toObject();
-  return token;
+  return { token, user: userData };
 };
 
 const createProduct = async (

@@ -1,10 +1,13 @@
-require("dotenv").config(); //this loads the defined variables from .env file
+require("dotenv").config(); 
 const dbConnect = require("./config/dbConnect");
 const mongoose = require("mongoose");
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const port = 3000;
 dbConnect();
+
+app.use(cors({ origin: "http://localhost:5174" }));
 
 app.use(express.json()); //this is a middleware that parses the incoming request with JSON payloads
 app.get("/", (req, res) => {
