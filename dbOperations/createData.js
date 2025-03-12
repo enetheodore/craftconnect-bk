@@ -25,6 +25,10 @@ const createCategory = async (name, description, createdAt) => {
 };
 
 const registerUser = async (name, email, password, role) => {
+  const existingUser = await userModel.findOne({ email: email });
+  if (existingUser) {
+    throw new Error("User already exists");
+  }
   const hashedPassword = await hashPassword(password);
   const data = new userModel({
     name: name,
