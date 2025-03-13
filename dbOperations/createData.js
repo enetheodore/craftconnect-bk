@@ -25,10 +25,6 @@ const createCategory = async (name, description, createdAt) => {
 };
 
 const registerUser = async (name, email, password, role) => {
-  const existingUser = await userModel.findOne({ email: email });
-  if (existingUser) {
-    throw new Error("User already exists");
-  }
   const hashedPassword = await hashPassword(password);
   const data = new userModel({
     name: name,
@@ -56,7 +52,7 @@ const loginUser = async (email, password) => {
   const token = await generateToken(user);
 
   const { password: _, ...userData } = user.toObject();
-  return { token, user: userData };
+  return {...userData,token};
 };
 
 const createProduct = async (

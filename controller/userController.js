@@ -16,17 +16,17 @@ const loginPost = async (req, res) => {
 
   try {
     const user = await loginUser(email, password);
-    res.status(200).json({ message: "Login successful", user });
+    res.status(200).json({message: "Login successful", user});
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 };
 
-const productPost = async (req, res) => {
+const productPost =async (req, res) => {
   const { title, description, price, categoryId, artisanId, images, inventoryCount } = req.body;
 
   try {
-    const newProductItem = await createProduct(
+      const newProductItem = await createProduct(
       title,
       description,
       price,
@@ -35,11 +35,11 @@ const productPost = async (req, res) => {
       images,
       inventoryCount,
     );
-
+    
     res.status(201).json(newProductItem);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 };
 
-module.exports = { registerPost, loginPost, productPost };
+module.exports = { registerPost ,loginPost, productPost }; 

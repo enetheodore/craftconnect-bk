@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler");
 const categoryModel = require("../models/categoryModel");
 const categoryPost = async (req, res) => {
   const { name, description, createdAt } = req.body;
-
+  
   try {
     const category = await createCategory(name, description, createdAt);
     res.status(201).json(category.id);
@@ -25,8 +25,7 @@ const getCatagories = asyncHandler(async (req, res) => {
   const startIndex = (page - 1) * limit; // Calculate the starting index for the current page
 
   const total = await categoryModel.countDocuments(query); // Get the total number of documents
-  const catagories = await categoryModel
-    .find(query)
+  const catagories = await categoryModel.find(query)
     .skip(startIndex)
     .limit(limit)
     .sort({ createdAt: -1 })
@@ -45,4 +44,4 @@ const getCatagories = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = { categoryPost, getCatagories };
+module.exports = { categoryPost ,getCatagories};
