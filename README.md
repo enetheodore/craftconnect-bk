@@ -1,11 +1,12 @@
-# React + Vite Backend
+# Craft-Connect -Backend 
 
 This template provides a minimal setup to support your React + Vite frontend with a robust backend.
 
-📋 Table of Contents  
-1. 🤖 Introduction  
-2. ⚙️ Tech Stack  
-3. 🚀 Getting Started  
+📋 Table of Contents 
+
+  1. 🤖 Introduction  
+  2. ⚙️ Tech Stack  
+  3. 🚀 Getting Started  
 
 ---
 

@@ -1,5 +1,6 @@
 require("dotenv").config(); 
 const dbConnect = require("./config/dbConnect");
+const Redis = require("ioredis");
 const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
@@ -7,6 +8,16 @@ const app = express();
 const port = 3000;
 dbConnect();
 
+const redis = new Redis({
+  host: "127.0.0.1", 
+  port: 6379,        
+});
+redis.on("connect", () => {
+  console.log("Connected to Redis");
+});
+redis.on("error", (error) => {
+  console.log("Error connecting to Redis", error);
+});
 app.use(cors({ origin: "*" }));
 
 app.use(express.json()); //this is a middleware that parses the incoming request with JSON payloads
@@ -38,4 +49,4 @@ mongoose.connection.on("error", (error) => {
   console.log("Error connecting to MongoDB", error);
 }); 
 
-module.exports = app;
+module.exports = {app,redis};
