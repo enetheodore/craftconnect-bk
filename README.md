@@ -1,12 +1,14 @@
-# Craft-Connect -Backend 
+# Craft-Connect -Backend
 
 This template provides a minimal setup to support your React + Vite frontend with a robust backend.
 
-📋 Table of Contents 
+📋 Table of Contents
 
-  1. 🤖 Introduction  
-  2. ⚙️ Tech Stack  
-  3. 🚀 Getting Started  
+   1. 🤖 Introduction  
+   2. ⚙️ Tech Stack
+   3. 🛠️ Features
+   4. 🗓️ Planned Features
+   5. 🚀 Getting Started  
 
 ---
 
@@ -35,6 +37,23 @@ The platform's goals are to drive sales, foster community, and ensure secure tra
 - **Nodemon**: A utility that monitors for changes in your source code and automatically restarts your server.
 
 ---
+
+🛠️ Features Added
+
+- **used clean architecture**: The project is structured using clean architecture principles.
+- **used JWT for authentication**: The project uses JWT for authentication.
+- **Role-based access control**: Implementing role-based access control to restrict access to certain routes.
+- **used bcrypt for password hashing**: The project uses bcrypt for password hashing.
+- **used mongoose for database operations**: The project uses mongoose for database operations.
+- **used redis for caching**: The project uses redis for caching.
+- **file upload**: The project uses multer for file upload.
+
+🗓️ Planned Features
+
+- **scalability**: The project will be designed to be scalable.
+- **real-time updates**: The project will be designed to provide real-time updates.
+- **search functionality**: The project will be designed to provide search functionality.
+- **payment gateway integration**: The project will be designed to integrate a payment gateway.
 
 🚀 Getting Started
 
