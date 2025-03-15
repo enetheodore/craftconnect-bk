@@ -33,6 +33,8 @@ app.use("/product", require("./routes/productRoute"));
 app.use("/order", require("./routes/orderRoute"));
 app.use("/category", require("./routes/categoryRoute"));  
 app.use("/file", require("./routes/fileRoute"));
+app.use("/public", require("./routes/fileRoute"));
+
 // This is the error handler for routes that doesn't exist
 app.all("*", (req, res) => {
   res.status(404).send("Page not found");

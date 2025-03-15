@@ -1,11 +1,17 @@
 const express = require("express");
-const { acceptOrder, shipOrder, deliverOrder } = require("../dbOperations/updateData"); 
+const {
+  getOrderController,
+  createOrderController,
+} = require("../controller/orderController");
 const router = express.Router();
 
-router.put("/order/:id/accept", acceptOrder);
+router.get("/", getOrderController);
+router.post("/create", createOrderController);
 
-router.put("/order/:id/ship", shipOrder);
+// router.put("/accept/:id", acceptOrder);
 
-router.put("/order/:id/deliver", deliverOrder);
+// router.put("/ship/:id/", shipOrder);
+
+// router.put("/deliver/:id/", deliverOrder);
 
 module.exports = router;

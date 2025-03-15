@@ -3,19 +3,25 @@ const mongoose = require("mongoose");
 const orderSchema = new mongoose.Schema({
   customerId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User", 
+    ref: "User",
     required: true,
   },
-  artisanId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User", 
-    required: true,
-  },
+
   products: [
     {
+      categoryId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Category",
+        required: true,
+      },
+      artisanId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+      },
       productId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Product", 
+        ref: "Product",
         required: true,
       },
       quantity: {
@@ -23,7 +29,7 @@ const orderSchema = new mongoose.Schema({
         required: true,
       },
       price: {
-        type: Number, 
+        type: Number,
         required: true,
       },
     },
@@ -45,6 +51,6 @@ const orderSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-},);
+});
 
 module.exports = mongoose.model("Order", orderSchema);

@@ -1,20 +1,28 @@
-
 const Order = require("../models/orderModel");
 
-const updateTest = async(id, newName) => {
-   const updateData = await testModel.updateOne({ _id: id }, { $set: { name: newName} });
+const updateTest = async (id, newName) => {
+  const updateData = await testModel.updateOne(
+    { _id: id },
+    { $set: { name: newName } }
+  );
   return updateData;
-}
-
+};
 
 // Function to update order status
-const createOrder = async (customerId, artisanId, products, totalAmount) => {
+const createOrder = async (
+  customerId,
+  artisanId,
+  products,
+  totalAmount,
+  productId
+) => {
   const newOrder = new Order({
     customerId,
     artisanId,
     products,
     totalAmount,
-    orderStatus: "ordered", 
+    orderStatus: "ordered",
+    productId,
   });
 
   await newOrder.save();
@@ -23,9 +31,12 @@ const createOrder = async (customerId, artisanId, products, totalAmount) => {
 
 // Get all orders for a customer or artisan
 const getOrders = async (userId) => {
-  return await Order.find({
-    $or: [{ customerId: userId }, { artisanId: userId }],
-  }).populate("customerId artisanId products.productId"); 
+  const orders = await Order.find({ customerId: userId });
+  return orders;
+  // console.log(userId)
+  // return await Order.find({
+  //   $or: [{ customerId: userId }],
+  // }).populate("customerId artisanId products.productId");
 };
 
 const updateOrderStatus = async (orderId, newStatus) => {
@@ -49,7 +60,7 @@ const updateOrderStatus = async (orderId, newStatus) => {
   }
 
   order.orderStatus = newStatus;
-  order.updatedAt = new Date(); 
+  order.updatedAt = new Date();
 
   await order.save();
   return order;
@@ -67,4 +78,11 @@ const deliverOrder = async (orderId) => {
   return await updateOrderStatus(orderId, "delivered");
 };
 
-module.exports = { createOrder, getOrders, acceptOrder, shipOrder, deliverOrder, updateTest };
+module.exports = {
+  createOrder,
+  getOrders,
+  acceptOrder,
+  shipOrder,
+  deliverOrder,
+  updateTest,
+};
